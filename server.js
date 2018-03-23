@@ -128,7 +128,7 @@ let accessLogStream = require('file-stream-rotator').getStream({filename: './acc
 app.use(morgan('combined', {stream: accessLogStream}))
 
 /* HTTP request logging - Wissenschaftliches Projekt - Alles in einer Datei */
-let accessLogStream_p = require('file-stream-rotator').getStream({filename: './app/access_p.log', frequency: 'aaaaa', verbose: false})
+let accessLogStream_p = require('file-stream-rotator').getStream({filename: './app/access_p.txt', frequency: 'aaaaa', verbose: false, max_logs: '2d'})
 app.use(morgan('combined', {stream: accessLogStream_p}))
 
 /** Authorization **/
