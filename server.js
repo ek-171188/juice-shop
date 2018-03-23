@@ -127,6 +127,10 @@ app.use(bodyParser.json())
 let accessLogStream = require('file-stream-rotator').getStream({filename: './access.log', frequency: 'daily', verbose: false, max_logs: '2d'})
 app.use(morgan('combined', {stream: accessLogStream}))
 
+/* HTTP request logging - Wissenschaftliches Projekt - Alles in einer Datei */
+let accessLogStream_p = require('file-stream-rotator').getStream({filename: './app/access_p.log', frequency: 'aaaaa', verbose: false})
+app.use(morgan('combined', {stream: accessLogStream_p}))
+
 /** Authorization **/
 /* Checks on JWT in Authorization header */
 app.use(verify.jwtChallenges())
