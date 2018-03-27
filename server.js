@@ -128,8 +128,12 @@ let accessLogStream = require('file-stream-rotator').getStream({filename: './acc
 app.use(morgan('combined', {stream: accessLogStream}))
 
 /* HTTP request logging - Wissenschaftliches Projekt - Alles in einer Datei */
-let accessLogStream_p = require('file-stream-rotator').getStream({filename: './app/access_p.txt', frequency: 'aaaaa', verbose: false, max_logs: '2d'})
+let accessLogStream_p = require('file-stream-rotator').getStream({filename: './app/access_p.txt', frequency: 'aaaaa', verbose: false})
 app.use(morgan('combined', {stream: accessLogStream_p}))
+
+/* HTTP request logging - Wissenschaftliches Projekt - Zu Testzwecken */
+let accessLogStream_p_08 = require('file-stream-rotator').getStream({filename: './app/access_p_08.txt', frequency: 'aaaaa', verbose: false})
+app.use(morgan('":remote-addr" ":remote-user" ":date[iso]" ":method" ":url" "HTTP/:http-version" ":status" ":res[content-length]" ":referrer" ":user-agent"', {stream: accessLogStream_p_08}))
 
 /** Authorization **/
 /* Checks on JWT in Authorization header */
